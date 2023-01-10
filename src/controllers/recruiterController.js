@@ -1,9 +1,9 @@
 
-const recruiterModels = require("../models/recruiterModel");
+
 const recruiterModels = require("../models/recruiterModels");
 // const authorModel = require("../models/authorModel");
 
-//==================== CREATE user FUNCTION ==========================
+//==================== ==========================
 
 const createUser = async function (req, res) {
 
