@@ -1,4 +1,29 @@
-const jobPostModel= require('../controllers/jobPostController')
+const jobPostModel= require('../models/jobPostModel')
+
+
+//======================
+const createJobPst = async function (req, res) {
+
+    
+    try {
+      let data=req.body;
+   
+      let createData= await jobPostModel.create(data)
+  
+  
+  return res.status(201).send({status:true,data:createData})
+  
+  
+  
+    } catch(err){
+  return res.status(500).send({status:false,msg:err.message})
+    }
+  
+  
+  }
+  
+
+//=========================
 
 const getJob = async function(req,res) {
     try{
@@ -27,10 +52,14 @@ let updateJob= async function(req,res){
    try{
 
     let data= req.body
+
+    let check= await jobPostModel.findOne({email:data.email})
     
+if(!check){
+    return res.send({status:false,msg:"data not found"})
+}
 
-
-let updateData= await jobPostModel.findOne({email:data.email,data,new:true})
+let updateData= await jobPostModel.findOneAndUpdate({email:data.email,check:data})
 
 return  res.status(200).send({status: true, data:updateData})
 
@@ -50,3 +79,4 @@ return  res.status(200).send({status: true, data:updateData})
 
 module.exports.getJob=getJob
 module.exports.updateJob=updateJob
+module.exports.createJobPst=createJobPst;

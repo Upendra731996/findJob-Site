@@ -8,7 +8,8 @@ router.get("/test-me", function (req, res) {
   res.send("My first ever api!");
 });
 router.post("/recruiter", recruiterController.createUser)
-router.put("/update", jobPostController.updateJob)
+router.post("/createJOB", jobPostController.createJobPst)
+router.put("/updateJob", jobPostController.updateJob)
 
 
 

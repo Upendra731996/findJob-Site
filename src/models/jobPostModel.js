@@ -26,6 +26,10 @@ const jobPostSchema = new mongoose.Schema(
     skills:{
         type:String,
         
+    },
+    isdeleted:{
+      type:Boolean,
+      default:false
     }
 
   },
@@ -34,4 +38,4 @@ const jobPostSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("user", jobPostSchema);
+module.exports = mongoose.model("job", jobPostSchema);
